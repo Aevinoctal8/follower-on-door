@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   position: relative;
   min-height: 100vh;
   z-index: 0;
@@ -70,7 +70,7 @@ body::before {
 
 .nav-links li a {
   position: relative;
-  color: #000000;
+  color: #ffffff;
   text-decoration: none;
   font-size: 18px;
   padding: 8px 12px;
@@ -139,7 +139,7 @@ body::before {
   font-size: 28px;
   background: none;
   border: none;
-  color: #000;
+  color: #ffffff;
   cursor: pointer;
   display: none;
 }
@@ -156,7 +156,7 @@ body::before {
     position: absolute;
     top: 100%;
     right: 0px;
-    background: white;
+    background: rgb(0, 0, 0);
     border: 1px solid #16A3E9;
     border-radius: 5px;
     width: 200px;
@@ -250,7 +250,7 @@ body::before {
     0 0 3px #16A3E9,
     0 0 3px #16A3E9,
     0 0 3px #16A3E9;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-weight: bold;
   -webkit-text-stroke: 1px #16A3E9;
 }
@@ -353,7 +353,7 @@ body::before {
 
 .stats-section h5 {
     margin-top: 10px;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -479,3 +479,108 @@ body::before {
     footer {
       border-radius: 24px;
     }
+
+.discount-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, rgb(72 118 247), rgb(248, 87, 87));
+    color: white;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1050;
+    text-align: center;
+}
+
+.discount-banner a#grab-now {
+    white-space: nowrap;
+}
+
+.discount-banner .btn-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Small device adjustment */
+@media (max-width: 576px) {
+    .discount-banner {
+        font-size: 0.9rem;
+        flex-direction: column;
+        padding: 15px 0px 18px;
+    }
+
+    .discount-banner .btn-close {
+        top: 10px;
+        right: 10px;
+        transform: none;
+    }
+    h1 span{
+      font-size: 15px !important;
+      letter-spacing: 2px;
+    }
+    .thunder-container{
+      margin-top: 0px !important;
+    }
+    .navbar{
+      margin-bottom: 0px !important;
+    }
+    .in-mobile{
+      margin-top: 5px !important;
+    }
+}
+.in-mobile{
+  margin-top: 30px;
+}
+
+p{
+  color: #ffffff !important;
+}
+
+h1, h2, h3, h4 {
+  color: #ffffff;
+}
+
+label{
+  color: #ffffff;
+}
+
+li{
+  color: #ffffff;
+}
+
+
+
+
+#iconRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.floating-icon {
+  position: absolute;
+  top: -30px;
+  font-size: 24px;
+  animation: fall linear forwards;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}

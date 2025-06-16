@@ -141,7 +141,7 @@
         // Check localStorage for duplicate
         const savedEntries = JSON.parse(localStorage.getItem("paidUsernames") || "[]");
         if (savedEntries.includes(`${platform}:${username.toLowerCase()}`)) {
-            showAlert("warning", "Hang tight! Your 1,000 followers or subscribers are on the way and will be delivered within 3 days. If you've already made the payment, please sit back and relax—we’ve got you covered. If not, please complete the payment of ₹89 or $1.04 to start growing your account today!");
+            showAlert("warning", "Hang tight! Your 1,000 followers or subscribers are on the way and will be delivered within 3 days. If you've already made the payment, please sit back and relax—we’ve got you covered. If not, please complete the payment of ₹89 to start growing your account today!");
             return;
         }
 

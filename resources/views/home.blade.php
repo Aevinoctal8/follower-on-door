@@ -146,7 +146,7 @@
         </div>
     </div>
     <div class="container my-5">
-        <h2 class="text-center mb-4 font-weight-bold">🔥 Try Our Paid Service to get 1000 followers or subscribers – Just ₹89 or $1.04</h2>
+        <h2 class="text-center mb-4 font-weight-bold">🔥 Try Our Paid Service to get 1000 followers or subscribers – Just ₹89</h2>
         <div class="p-4 stylish-form mt-5">
             <div class="row">
                 <!-- Left Column: Step Images -->
@@ -157,55 +157,92 @@
                 </div>
 
                 <!-- Right Column: Steps Forms -->
-                <div class="col-md-6 mt-5">
-                    <div id="step1">
-                        <h4 class="font-weight-bold mb-3">📝 Enter Details</h4>
-                        <form id="step1Form">
-                            <div class="mb-3">
-                                <label for="platform" class="form-label">Choose Platform:</label>
-                                <select class="form-select" id="platform" required>
-                                    <option value="">Select One</option>
-                                    <option value="instagram">Instagram</option>
-                                    <option value="youtube">YouTube</option>
-                                    <option value="telegram">Telegram</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username or Channel Link:</label>
-                                <input type="text" class="form-control" placeholder="Enter user name or link" id="username" required>
-                                <div class="invalid-feedback" id="usernameError"></div>
-                            </div>
-                            <button type="submit" class="btn btn-submit px-5">Continue to Payment</button>
-                        </form>
-                    </div>
-
-                    <div id="step2" class="d-none">
-                        <h4 class="mt-4 font-weight-bold mb-3">💸 Scan & Pay</h4>
-                        <p>Scan the QR code below to pay ₹89 or $1.04</p>
-                        <img src="{{ asset('images/qr.png') }}" alt="QR Code" class="img-fluid mb-3" width="400">
-                        <div>
-                            <button class="btn btn-submit px-5" onclick="goToStep(3)">Next</button>
+                <div class="col-md-6 in-mobile">
+                        <div id="step1">
+                            <h4 class="font-weight-bold mb-3">📝 Enter Details</h4>
+                            <form id="step1Form">
+                                <div class="mb-3">
+                                    <label for="platform" class="form-label">Choose Platform:</label>
+                                    <select class="form-select" id="platform" required>
+                                        <option value="">Select One</option>
+                                        <option value="instagram">Instagram</option>
+                                        <option value="youtube">YouTube</option>
+                                        <option value="telegram">Telegram</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username or Channel Link:</label>
+                                    <input type="text" class="form-control" placeholder="Enter user name or link" id="username" required>
+                                    <div class="invalid-feedback" id="usernameError"></div>
+                                </div>
+                                <button type="submit" class="btn btn-submit px-5">Continue to Payment</button>
+                            </form>
                         </div>
-                    </div>
-
-                    <div id="step3" class="d-none">
-                        <h4 class="mt-4 font-weight-bold mb-3">📤 Submit Proof</h4>
-                        <form id="step3Form">
-                            <div class="mb-3">
-                                <label for="screenshot" class="form-label">Upload Payment Screenshot</label>
-                                <input type="file" class="form-control" id="screenshot" accept="image/*" required>
+                        <div class="row in-mobile">
+                            <div>
+                                <div class="d-flex align-item-center">
+                                    <div id="step2" class="d-none in-mobile">
+                                        <h4 class="mt-4 font-weight-bold mb-3 in-mobile">💸 Easy to Pay</h4>
+                                        <p>Click the button below to pay ₹89 securely</p>
+                                        <div>
+                                            <button class="btn btn-submit px-5" onclick="openRazorpay(3)">Pay ₹89</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="hidden" id="finalUsername">
-                            <input type="hidden" id="finalPlatform">
-                            <button type="submit" class="btn btn-success">Submit & Finish</button>
-                        </form>
-                    </div>
-
-                    <div id="alertBox" class="alert mt-4 d-none" role="alert"></div>
+                        </div>
+                        <div id="step3" class="d-none">
+                            <h4 class="mt-4 font-weight-bold mb-3">📤 Submit Proof</h4>
+                            <form id="step3Form">
+                                <div class="mb-3">
+                                    <label for="screenshot" class="form-label">Upload Payment Screenshot</label>
+                                    <input type="file" class="form-control" id="screenshot" accept="image/*" required>
+                                </div>
+                                <input type="hidden" id="finalUsername">
+                                <input type="hidden" id="finalPlatform">
+                                <button type="submit" class="btn btn-success">Submit & Finish</button>
+                            </form>
+                        </div>
+    
+                        <div id="alertBox" class="alert mt-4 d-none" role="alert"></div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="discountBanner" class="discount-banner">
+        🎉 Special Discount: <del>₹249</del> <strong>Now ₹89!</strong> Limited time only.
+        <a href="/#" class="btn btn-sm btn-light ms-2 mt-2 mt-md-0" id="grab-now">Grab Now</a>
+        <button onclick="closeDiscountBanner()" class="btn-close ms-auto" aria-label="Close"></button>
+    </div>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    function openRazorpay() {
+        var options = {
+            "key": "rzp_test_sbbb4ddMvdCZbz",
+            "amount": 8900,
+            "currency": "INR",
+            "name": "Followers on Door",
+            "description": "Purchase Followers Plan",
+            "image": "{{ asset('images/logo.png') }}",
+            "handler": function (response) {
+                showAlert("success", "🎉 Thank you! Your submission is complete. We will review your payment, and you'll receive your 1000 followers/subscribers within 3 days.");
+                step1Form.reset();
+                goToStep(1);
+            },
+            "prefill": {
+                "name": "test",
+                "email": "",
+                "contact": ""
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+</script>
+
 <script>
     let totalUsers = 1324;
     let totalSubscribers = 437473;
@@ -231,6 +268,10 @@
     const formSection = document.getElementById("step1Form");
     formSection.scrollIntoView({ behavior: "smooth", block: "start" });
   });
+    document.getElementById("grab-now").addEventListener("click", function () {
+        const formSection = document.getElementById("step1Form");
+        formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 </script>
 <script>
     const platformButtons = document.querySelectorAll('.platform-btn');
@@ -238,7 +279,7 @@
     const inputLabel = document.getElementById('inputLabel');
     const errorDiv = document.getElementById('inputError');
 
-    let selectedPlatform = 'instagram'; // default
+    let selectedPlatform = 'instagram';
 
     platformButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -354,7 +395,7 @@
         // Check localStorage for duplicate
         const savedEntries = JSON.parse(localStorage.getItem("paidUsernames") || "[]");
         if (savedEntries.includes(`${platform}:${username.toLowerCase()}`)) {
-            showAlert("warning", "Hang tight! Your 1,000 followers or subscribers are on the way and will be delivered within 3 days. If you've already made the payment, please sit back and relax—we’ve got you covered. If not, please complete the payment of ₹89 or $1.04 to start growing your account today!");
+            showAlert("warning", "Hang tight! Your 1,000 followers or subscribers are on the way and will be delivered within 3 days. If you've already made the payment, please sit back and relax—we’ve got you covered. If not, please complete the payment of ₹89 to start growing your account today!");
             return;
         }
 
@@ -395,4 +436,41 @@
         setTimeout(() => alertBox.classList.add("d-none"), 10000);
     }
 </script>
+<script>
+    function closeDiscountBanner() {
+        document.getElementById('discountBanner').style.display = 'none';
+    }
+</script>
+
+<script>
+  const icons = ["❤️", "👤", "🚀", "🔔", "💬"];
+  const container = document.getElementById("iconRain");
+
+  let totalIcons = 100;
+  let dropped = 0;
+
+  function dropIcon() {
+    if (dropped >= totalIcons) return;
+
+    const icon = document.createElement("div");
+    icon.className = "floating-icon";
+    icon.innerText = icons[Math.floor(Math.random() * icons.length)];
+
+    icon.style.left = Math.random() * 100 + "vw";
+    icon.style.animationDuration = (2 + Math.random() * 2) + "s";
+
+    container.appendChild(icon);
+    dropped++;
+
+    setTimeout(() => icon.remove(), 5000);
+  }
+
+  const dropInterval = setInterval(() => {
+    dropIcon();
+    if (dropped >= totalIcons) clearInterval(dropInterval);
+  }, 10);
+</script>
+
+
+
 @endsection

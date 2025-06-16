@@ -25,22 +25,22 @@
             <form id="contactForm" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">🙋‍♂️ Your Name</label>
-                    <input type="text" class="form-control" id="name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">📧 Email address</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="subject" class="form-label">📝 Subject</label>
-                    <input type="text" class="form-control" id="subject">
+                    <input type="text" class="form-control" id="subject" placeholder="Enter subject for connecting us">
                 </div>
 
                 <div class="mb-3">
                     <label for="message" class="form-label">💬 Your Message</label>
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
                 </div>
 
                 <div class="mb-3">

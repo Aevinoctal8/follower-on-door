@@ -6,7 +6,7 @@
 
     <title>@yield('title', 'Followers on Door - Get Free Instagram, YouTube & Telegram Growth')</title>
     <meta name="description" content="@yield('meta_description', 'Boost your social media with Followers on Door. Get real followers, subscribers, and members for Instagram, YouTube, and Telegram — fast, safe, and affordable.')">
-    <meta name="keywords" content="free Instagram followers, free youtube subscriber, followers kaise badhaye, subscriber kaise badhaye, buy followers, YouTube subscribers, get Telegram members, grow social media, boost Instagram, Telegram promotion, free social growth">
+    <meta name="keywords" content="free Instagram followers, free youtube subscriber, followers kaise badhaye, subscriber kaise badhaye, buy followers, buy YouTube subscribers, get Telegram members, grow social media, boost Instagram, Telegram promotion, free social growth, get real followers, get real subscriber">
     <meta name="author" content="Followers on Door">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -26,8 +26,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{{ asset('styles.css') }}">
+
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
 </head>
-    <body>   
+    <body>
+        <div id="iconRain"></div>
+   
         <div class="container">
             @include('header')
             @yield('content')
